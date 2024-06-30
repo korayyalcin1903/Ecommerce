@@ -1,6 +1,7 @@
 ﻿using Ecommerce.Data.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce.Controllers;
 
@@ -14,9 +15,22 @@ public class AccountController:Controller
         _signInManager = signInManager;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Profile(string username)
     {
-        return View();
+        if(username == null){
+            return NotFound();
+        }
+
+        if(User.Identity.Name == username){
+            var user = await _userManager.FindByNameAsync(username);
+            if(user != null){
+                return View(user);
+            } else {
+                return NotFound();
+            }
+        } else {
+            return NotFound();
+        }
     }
 
     public IActionResult Register()

@@ -32,9 +32,14 @@
                     </ul>
                     @if (User.Identity.IsAuthenticated){
                         <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a asp-action="Login" asp-controller="Account" class="nav-link text-dark"><img src="@Url.Content("~/img/user/"+avatar)" alt="">@User.Identity.Name</a>
-                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    @User.Identity.Name
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="/Profile/@User.Identity.Name">Profile</a></li>
+                                </ul>
+                                </li>
                             <li class="nav-item">
                                 <a asp-action="Logout" asp-controller="Account" class="nav-link text-dark">Logout</a>
                             </li>
