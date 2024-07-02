@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "2BOQfyb3AK5odqrKBT/9v8Ww8COwH/eQI3LUW3zG2ytl6EtR/Cug1ikhsqHpQpXIi5nhDhk8PrbjoB4Ywk1/Uw==",
+  "dgSpecHash": "IKtBhwQDyP0b/vDY2Aphr6dt7BTSLNO3iL5uTKpk+0RuF1KYso/4rHkB/H6uUDTyaxK6QG9hWAjwLHiWp2JfHg==",
   "success": true,
   "projectFilePath": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\Ecommerce.csproj",
   "expectedPackageFiles": [
@@ -48,7 +48,8 @@
     "C:\\Users\\koray\\.nuget\\packages\\system.text.encoding.codepages\\6.0.0\\system.text.encoding.codepages.6.0.0.nupkg.sha512",
     "C:\\Users\\koray\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
     "C:\\Users\\koray\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512",
-    "C:\\Users\\koray\\.nuget\\packages\\system.threading.channels\\6.0.0\\system.threading.channels.6.0.0.nupkg.sha512"
+    "C:\\Users\\koray\\.nuget\\packages\\system.threading.channels\\6.0.0\\system.threading.channels.6.0.0.nupkg.sha512",
+    "C:\\Users\\koray\\.nuget\\packages\\tinymce\\7.2.0\\tinymce.7.2.0.nupkg.sha512"
   ],
   "logs": []
 }

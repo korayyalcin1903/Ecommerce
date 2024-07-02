@@ -3,7 +3,7 @@
 }
 <div class="row">
     <div class="col-3">
-        <h3>Categories k</h3>
+        <h3>Categories</h3>
         <div class="list-group">
             @foreach(var category in ViewBag.Categories){
                 <a href="/Category/@category.CategoryName" class="list-group-item list-group-item-action">@category.CategoryName</a>
@@ -11,23 +11,36 @@
         </div>
     </div>
     <div class="col-9">
-        <h3>Products</h3>
+        <div class="d-flex">
+            <h3>Products</h3>
+            <div class="ms-auto">
+                <form class="d-flex" asp-action="Index" asp-controller="Home" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" name="search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
         <hr>
         <div class="row">
             @foreach(var product in Model){
                 <div class="card mb-3 col-6 col-sm-6 col-md-4">
-                    <div class="row d-flex align-items-center text-start">
-                        <div class="col-md-4">
-                        <a href="/details/@product.ProductId"><img src="~/img/product/@product.Image" class="img-fluid rounded" alt="..."></a>
+                    <div class="text-start">
+                        <div class="">
+                        <a href="product/details/@product.ProductId"><img src="~/img/product/@product.Image" class="img-fluid rounded" alt="..."></a>
                         </div>
-                        <div class="col-md-8">
+                        <div class="">
                             <div class="card-body">
-                                <a href="/details/@product.ProductId" style="text-decoration: none;" class="text-dark"><h5 class="card-title">@product.ProductName</h5><strong>@product.Price ₺</strong></a>
-                                <p class="card-text">@product.Description</p>
-                                <form asp-action="Cart" asp-controller="Home" method="post">
-                                    @* <input type="hidden" asp-for="@product.ProductId" name="Id"> *@
-                                    <button type="submit" class="btn btn-outline-success">Add to cart</button>
-                                </form>
+                                <a href="product/details/@product.ProductId" style="text-decoration: none;" class="text-dark"><h5 class="card-title">@product.ProductName.Substring(0, Math.Min(40, product.ProductName.Length))...</h5></a>
+                                <strong>@product.Price ₺</strong>
+                                <div class="d-flex mt-3">
+                                    <form asp-action="Cart" asp-controller="Home" method="post">
+                                        <button type="submit" class="btn btn-outline-success">Add to cart</button>
+                                    </form>
+                                    @if(User.IsInRole("Admin")){
+                                        <a href="Product/Edit/@product.ProductId" class="btn btn-outline-warning mx-1">Edit</a>
+                                        <a href="Product/Delete/@product.ProductId" class="btn btn-outline-danger">Delete</a>
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -10,7 +10,7 @@ namespace Ecommerce.Data.Concrete
         public EcommerceContext(DbContextOptions<EcommerceContext> options): base(options)
         {}
 
-        public virtual DbSet<User> Users => Set<User>();
+        public new virtual DbSet<User> Users => Set<User>();
         public virtual DbSet<Product> Products => Set<Product>();
         public virtual DbSet<Order> Orders => Set<Order>();
         public virtual DbSet<Category> Categorys => Set<Category>();

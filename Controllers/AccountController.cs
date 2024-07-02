@@ -1,4 +1,5 @@
 ﻿using Ecommerce.Data.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -39,6 +40,7 @@ public class AccountController:Controller
         return randomFileName;
     }
 
+    [Authorize]
     public async Task<IActionResult> Profile(string username)
     {
         if(username == null){
@@ -137,6 +139,7 @@ public class AccountController:Controller
     }
 
     [HttpGet]
+    [Authorize]
     public async Task<IActionResult> Edit()
     {
         var username = User.Identity.Name;
@@ -162,6 +165,7 @@ public class AccountController:Controller
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> Edit(ProfileViewModel model, IFormFile formFile)
     {
 

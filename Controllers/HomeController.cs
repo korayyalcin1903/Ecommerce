@@ -15,20 +15,24 @@ public class HomeController : Controller
     {
         _context = context;
     }
-
-    public async Task<IActionResult> Index(string category)
+    
+    public async Task<IActionResult> Index(string category, string search)
     {
-        var product = await _context.Products.ToListAsync();
+        var products = await _context.Products.ToListAsync();
         ViewBag.Categories = await _context.Categorys.ToListAsync();
 
         if(!string.IsNullOrEmpty(category)){
             var categoryEntity = await _context.Categorys.FirstAsync(x => x.CategoryName == category);
-            product = product.Where(x => x.CategoryId == categoryEntity.CategoryId).ToList();
+            products = products.Where(x => x.CategoryId == categoryEntity.CategoryId).ToList();
 
-            return View(product);
+            return View(products);
         }
 
-        return View(product);
+        if(!string.IsNullOrEmpty(search)){
+            products = await _context.Products.Where(x => x.ProductName.Contains(search)).ToListAsync();
+        }
+
+        return View(products);
     }
 
 
