@@ -36,7 +36,7 @@ public static class SeedData
             var hasher = new PasswordHasher<User>();
 
             var user = new User 
-                { Name = "Koray", Surname = "Yalçın", Avatar = "1.jpg", UserName = "korayyalcin", Email = "koray@gmail.com", Address = "Pendik", City = "İstanbul", Country = "Turkey", PostalCode = 34034, PhoneNumber = "+90555555555555", Gender = true};
+                { Name = "Koray", Surname = "Yalçın", Avatar = "1.jpg", UserName = "korayyalcin", NormalizedUserName = "KORAYYALCIN", Email = "koray@gmail.com", NormalizedEmail="KORAY@GMAIL.COM", Address = "Pendik", City = "İstanbul", Country = "Turkey", PostalCode = 34034, PhoneNumber = "+90555555555555", Gender = true};
 
             user.PasswordHash = hasher.HashPassword(user, "1234");
             context.Users.Add(user);

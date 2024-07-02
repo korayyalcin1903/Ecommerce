@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ecommerce.Migrations
 {
     [DbContext(typeof(EcommerceContext))]
-    [Migration("20240630171638_InitialCreate")]
+    [Migration("20240701153833_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -100,14 +100,8 @@ namespace Ecommerce.Migrations
                     b.Property<string>("Country")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Notes")
-                        .HasColumnType("longtext");
-
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<string>("OrderStatus")
-                        .HasColumnType("longtext");
 
                     b.Property<string>("ShippingAddress")
                         .HasColumnType("longtext");
@@ -117,9 +111,6 @@ namespace Ecommerce.Migrations
 
                     b.Property<double>("TotalAmount")
                         .HasColumnType("double");
-
-                    b.Property<string>("TrackingNumber")
-                        .HasColumnType("longtext");
 
                     b.Property<string>("UserId")
                         .HasColumnType("varchar(255)");

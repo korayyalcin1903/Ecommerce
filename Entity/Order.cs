@@ -9,9 +9,6 @@ public class Order
     public string City { get; set; }
     public string Country { get; set; }
     public double TotalAmount { get; set; }
-    public string OrderStatus { get; set; }
-    public string TrackingNumber { get; set; }
-    public string Notes { get; set; }
     public string UserId { get; set; }
     public User User{ get; set; }
 

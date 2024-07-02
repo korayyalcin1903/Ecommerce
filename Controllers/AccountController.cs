@@ -15,6 +15,30 @@ public class AccountController:Controller
         _signInManager = signInManager;
     }
 
+    public async Task<string> ImageUpload(IFormFile formFile, string currentAvatarFileName)
+    {
+        var extension = "";
+        var randomFileName = currentAvatarFileName;
+
+        if (formFile != null){
+            var allowedExtensions = new[] { ".jpg", ".jpeg", ".png" };
+            extension = Path.GetExtension(formFile.FileName);
+
+            if (!allowedExtensions.Contains(extension)){
+                ModelState.AddModelError("", "Geçerli bir resim seçiniz.");
+            } else {
+                randomFileName = $"{Guid.NewGuid()}{extension}";
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/user", randomFileName);
+
+                using (var stream = new FileStream(path, FileMode.Create)){
+                    await formFile.CopyToAsync(stream);
+                }
+            }
+        }
+
+        return randomFileName;
+    }
+
     public async Task<IActionResult> Profile(string username)
     {
         if(username == null){
@@ -41,25 +65,6 @@ public class AccountController:Controller
     [HttpPost]
     public async Task<IActionResult> Register(RegisterViewModel model, IFormFile formFile)
     {
-        var extension = "";
-        var randomFileName = "user.jpg";
-
-        if (formFile != null){
-            var allowedExtensions = new[] { ".jpg", ".jpeg", ".png" };
-            extension = Path.GetExtension(formFile.FileName);
-
-            if (!allowedExtensions.Contains(extension)){
-                ModelState.AddModelError("", "Geçerli bir resim seçiniz.");
-            } else {
-                randomFileName = string.Format($"{Guid.NewGuid().ToString()}{extension}");
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/user", randomFileName);
-
-                using (var stream = new FileStream(path, FileMode.Create)){
-                    await formFile.CopyToAsync(stream);
-                }
-            }
-        }
-
         if (ModelState.IsValid){
             var user = await _userManager.FindByEmailAsync(model.Email);
             var username = await _userManager.FindByNameAsync(model.UserName);
@@ -72,7 +77,7 @@ public class AccountController:Controller
                         Surname = model.Surname,
                         UserName = model.UserName,
                         Email = model.Email,
-                        Avatar = randomFileName,
+                        Avatar = await ImageUpload(formFile, model.Avatar),
                         CreatedDate = DateTime.Now,
                         UpdatedDate = DateTime.Now
                     };
@@ -129,5 +134,73 @@ public class AccountController:Controller
     {
         await _signInManager.SignOutAsync();
         return RedirectToAction("Index","Home");
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Edit()
+    {
+        var username = User.Identity.Name;
+        if (username != null){
+            var user = await _userManager.FindByNameAsync(username);
+            if (user != null){
+                var model = new ProfileViewModel{
+                    Name = user.Name,
+                    Surname = user.Surname,
+                    UserName = user.UserName,
+                    Email = user.Email,
+                    Avatar = user.Avatar,
+                    Address = user.Address,
+                    City = user.City,
+                    Country = user.Country,
+                    Gender = user.Gender
+                };
+
+                return View(model);
+            }
+        }
+        return NotFound();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Edit(ProfileViewModel model, IFormFile formFile)
+    {
+
+        if(ModelState.IsValid){
+            if(model.Name == null){
+                return NotFound();
+            } else {
+                var username = User.Identity.Name;
+                if(username != null){
+                    var user = await _userManager.FindByNameAsync(username);
+                    if(user != null){
+                        user.Name = model.Name;
+                        user.Surname = model.Surname;
+                        user.UserName = model.UserName;
+                        user.Email = model.Email;
+                        user.Avatar = await ImageUpload(formFile, user.Avatar);
+                        user.Address = model.Address;
+                        user.City = model.City;
+                        user.Country = model.Country;
+                        user.PostalCode = model.PostalCode;
+                        user.Gender = model.Gender;
+                        user.UpdatedDate = DateTime.Now;
+
+                        var result = await _userManager.UpdateAsync(user);
+                        if(result.Succeeded){
+                            return RedirectToAction("Profile","Account", new {username = user.UserName});
+                        } else {
+                            foreach(var err in result.Errors){
+                                ModelState.AddModelError(string.Empty, err.Description);
+                            }
+                        }
+                    } else {
+                        return View(model);
+                    }
+                } else {
+                    return View(model);
+                }
+            }
+        }
+        return View(model);
     }
 }
