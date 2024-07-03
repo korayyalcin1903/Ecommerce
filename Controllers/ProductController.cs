@@ -43,6 +43,7 @@ public class ProductController: Controller
     {
         var product = await _context.Products.FirstOrDefaultAsync(x => x.ProductId == id);
         if(product != null){
+            ViewBag.Products = _context.Products.Where(x => x.CategoryId == product.CategoryId && x.ProductId != id).Take(5);
             return View(product);
         } else {
             return NotFound();
