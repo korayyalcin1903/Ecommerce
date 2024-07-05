@@ -8,7 +8,11 @@
         <div>
             <h4>Adress</h4>
             <hr>
-            <p>Pendik/İstanbul Turkey 34034</p>
+            @if(ViewBag.User.Address == null || ViewBag.User.City || ViewBag.User.Country){
+                <a href="/Account/Edit/" class="link-danger">Lütfen adres ekleyiniz...</a>
+            } else {
+                <p>Pendik/İstanbul Turkey 34034</p>
+            }
         </div>
         <div>
             <h5>Products</h5>
