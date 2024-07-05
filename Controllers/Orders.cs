@@ -11,7 +11,7 @@ public class Orders:Controller
     {
         _context = context;
     }
-    public async Task<IActionResult> Cart()
+    public IActionResult Cart()
     {
         return View();
     }
