@@ -1,0 +1,53 @@
+@model CheckoutViewModel
+
+<h1>Checkout</h1>
+<hr>
+
+<div class="row">
+    <div class="col-5">
+        <div>
+            <h4>Adress</h4>
+            <hr>
+            <p>Pendik/İstanbul Turkey 34034</p>
+        </div>
+        <div>
+            <h5>Products</h5>
+            <hr>
+            <div class="card">
+            <div class="row align-items-center">
+                    <div class="col-md-2">
+                        <img src="~/img/product/1.jpg" class="img-fluid rounded mx-3" width="70px" height="40px" alt="">
+                    </div>
+                    <div class="col-md-10 px-3 py-1">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h6>Product Name</h6>
+                            <p class="text-success mx-3"><strong>8000 ₺</strong></p>
+                        </div>
+                        <span class="badge bg-warning">5 Tane</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-7">
+        <div asp-validation-summary="All"></div>
+        <h4>Add a credit or debit card</h4>
+        <hr>
+        <form action="" method="post">
+            <label asp-for="CardNumber" class="form-label"></label>
+            <input type="number" class="form-control" asp-for="CardNumber">
+            <div class="row my-3">
+                <div class="col-8">
+                    <label asp-for="ExpirationDate" class="form-label"></label>
+                    <input type="month" class="form-control" asp-for="ExpirationDate">
+                </div>
+                <div class="col-4"> 
+                    <label asp-for="Cvc" class="form-label"></label>
+                    <input type="number" class="form-control" maxlength="3" minlength="3" asp-for="Cvc">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Complete the shopping</button>
+        </form>
+    </div>
+</div>
