@@ -33,7 +33,8 @@
                                 <a href="product/details/@product.ProductId" style="text-decoration: none;" class="text-dark"><h5 class="card-title">@product.ProductName.Substring(0, Math.Min(40, product.ProductName.Length))...</h5></a>
                                 <strong>@product.Price ₺</strong>
                                 <div class="d-flex mt-3">
-                                    <form asp-action="Cart" asp-controller="Home" method="post">
+                                    <form asp-action="Cart" asp-controller="Orders" method="post">
+                                        <input type="hidden" name="@product.ProductId">
                                         <button type="submit" class="btn btn-outline-success">Add to cart</button>
                                     </form>
                                     @if(User.IsInRole("Admin")){
