@@ -1,0 +1,69 @@
+@model CartViewModel
+
+<h3>Cart</h3>
+<hr>
+<div class="row">
+    <div class="col-8">
+        @foreach (var item in Model.Cart.Items ?? Enumerable.Empty<CartItem>())
+        {
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="~/img/product/@item.Product.Image" class="img-fluid rounded mx-3" width="100px" height="50px" alt="">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="d-flex justify-content-between">
+                            <h5>@item.Product.ProductName.Substring(0, Math.Min(80, item.Product.ProductName.Length))</h5>
+                            <h6 class="text-success mx-3 mt-1"><strong>@item.Product.Price.ToString("C2")</strong></h6>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <span class="badge bg-warning">@item.Quantity Tane</span>
+                            <div class="col-md-4 offset-md-4">
+                                <div class="input-group">
+                                    <form asp-action="RemoveFromCart" method="post" style="display:inline;">
+                                        <input type="hidden" name="id" value="@item.Product.ProductId" />
+                                        <button type="submit" class="btn btn-danger d-flex align-items-center rounded mx-2 p-1" style="height: 30px;"><i class="bi bi-trash"></i></button>
+                                    </form>
+                                    <button class="btn btn-outline-secondary d-flex align-items-center rounded" type="button" id="button-decrement-@item.Product.ProductId" style="height: 30px;" data-product-id="@item.Product.ProductId">-</button>
+                                    <input type="text" class="form-control text-center" style="height: 30px;" id="input-number-@item.Product.ProductId" value="@item.Quantity">
+                                    <button class="btn btn-outline-secondary d-flex align-items-center" type="button" id="button-increment-@item.Product.ProductId" style="height: 30px;" data-product-id="@item.Product.ProductId">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-4">
+        <div class="card p-3">
+            <h5 class="text-dark">Seçilen Ürünler</h5>
+            <h3 class="text-success"><strong>@Model.Cart.CalculateTotal().ToString("C2")</strong></h3>
+            <a href="/Orders/Checkout" class="btn btn-warning">Procced to checkout</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const decrementButton = document.getElementById("button-decrement")
+            const incrementButton = document.getElementById("button-increment")
+            const inputNumber = document.getElementById("input-number")
+
+            decrementButton.addEventListener('click', () => {
+                console.log("-1")
+                let currentValue = parseInt(inputNumber.value, 10);
+                if (currentValue > 0) {
+                    inputNumber.value = currentValue - 1;
+                }
+            })
+
+            incrementButton.addEventListener('click', () => {
+                console.log("+1")
+                let currentValue = parseInt(inputNumber.value, 10);
+                inputNumber.value = currentValue + 1;
+            })
+        })
+    </script>
+}

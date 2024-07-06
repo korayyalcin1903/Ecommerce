@@ -37,6 +37,9 @@ builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<EcommerceContext>()
     .AddDefaultTokenProviders();
 
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();
+
 var app = builder.Build();
 
 SeedData.TestVerileriniDoldur(app);
@@ -50,13 +53,15 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseSession();
 
 app.UseRouting();
 
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "product_by_category",
@@ -68,6 +73,12 @@ app.MapControllerRoute(
     name: "account_by_profile",
     pattern: "/Profile/{username}",
     defaults: new {controller = "Account", action = "Profile"}
+);
+
+app.MapControllerRoute(
+    name: "products_by_details",
+    pattern: "/Details/{id}",
+    defaults: new {controller = "Product", action = "Details"}
 );
 
 app.MapControllerRoute(

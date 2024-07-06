@@ -1,0 +1,11 @@
+<h3>Delete</h3>
+<hr>
+
+@Model.ProductId numaralı - @Model.ProductName adlı ürünü silmek istediğinizden emin misiniz?
+<div class="d-flex">
+    <form asp-action="Delete" asp-controller="Product" method="post">
+        <input type="hidden" value="@Model.ProductId" name="id">
+        <button type="submit" class="btn btn-danger">Evet</button>
+    </form>
+    <a href="/" class="btn btn-success mx-2">Hayır</a>
+</div>

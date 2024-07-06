@@ -58,6 +58,10 @@
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[8.0.2, )"
+            },
+            "tinymce": {
+              "target": "Package",
+              "version": "[7.2.0, )"
             }
           },
           "imports": [

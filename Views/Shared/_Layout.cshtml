@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Ecommerce</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Ecommerce.styles.css" asp-append-version="true" />
 </head>
@@ -27,8 +28,13 @@
                             <a class="nav-link text-dark" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        @if(User.IsInRole("Admin")){
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Product" asp-action="Create">Create</a>
+                            </li>
+                        }
                     </ul>
                     @if (User.Identity.IsAuthenticated){
                         <ul class="navbar-nav ms-auto">
