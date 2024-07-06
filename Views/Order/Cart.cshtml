@@ -1,0 +1,64 @@
+<h3>Cart</h3>
+<hr>
+<div class="row">
+    <div class="col-8">
+        @foreach(var item in Model.Cart.Items ?? Enumerable.Empty<CartItem>()){
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="~/img/product/@item.Image" class="img-fluid rounded mx-3" width="100px" height="50px" alt="">
+                    </div>
+                    <div class="col-md-10 p-3">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h4>Product Name</h4>
+                            <h6 class="text-success mx-3"><strong>8000 ₺</strong></h6>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <span class="badge bg-warning">5 Tane</span>
+                            <div class="col-md-4 offset-md-4">
+                                <div class="input-group">
+                                    <button type="submit" class="btn btn-danger d-flex align-items-center rounded mx-2 p-1" style="height: 30px;"><i class="bi bi-trash"></i></button>
+                                    <button class="btn btn-outline-secondary d-flex align-items-center rounded" type="button" id="button-decrement" style="height: 30px;">-</button>
+                                    <input type="text" class="form-control text-center" style="height: 30px;" id="input-number" value="0">
+                                    <button class="btn btn-outline-secondary d-flex align-items-center" type="button" id="button-increment" style="height: 30px;">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-4">
+        <div class="card p-3">
+            <h5 class="text-dark">Seçilen Ürünler</h5>
+            <h3 class="text-success"><strong>8000 ₺</strong></h3>
+            <a href="/Orders/Checkout" class="btn btn-warning">Procced to checkout</a>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const decrementButton = document.getElementById("button-decrement")
+            const incrementButton = document.getElementById("button-increment")
+            const inputNumber = document.getElementById("input-number")
+
+            decrementButton.addEventListener('click', () => {
+                console.log("-1")
+                let currentValue = parseInt(inputNumber.value, 10);
+                if (currentValue > 0) {
+                    inputNumber.value = currentValue - 1;
+                }
+            })
+
+            incrementButton.addEventListener('click', () => {
+                console.log("+1")
+                let currentValue = parseInt(inputNumber.value, 10);
+                inputNumber.value = currentValue + 1;
+            })
+        })
+    </script>
+}
