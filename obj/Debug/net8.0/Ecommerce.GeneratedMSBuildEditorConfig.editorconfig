@@ -9,79 +9,79 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Ecommerce
 build_property.RootNamespace = Ecommerce
-build_property.ProjectDir = D:\ASP_NET_CORE\MyProjects\Ecommerce\
+build_property.ProjectDir = d:\ASP_NET_CORE\MyProjects\Ecommerce\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\ASP_NET_CORE\MyProjects\Ecommerce
+build_property.MSBuildProjectDirectory = d:\ASP_NET_CORE\MyProjects\Ecommerce
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Account/Edit.cshtml]
+[d:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Account/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Account/Login.cshtml]
+[d:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Account/Profile.cshtml]
+[d:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Account/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxQcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Account/Register.cshtml]
+[d:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Home/Index.cshtml]
+[d:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Home/Privacy.cshtml]
+[d:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Orders/Cart.cshtml]
+[d:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Orders/Cart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXENhcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Orders/Checkout.cshtml]
+[d:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Orders/Checkout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXENoZWNrb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Product/Create.cshtml]
+[d:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Product/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Product/Delete.cshtml]
+[d:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Product/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Product/Details.cshtml]
+[d:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Product/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Product/Edit.cshtml]
+[d:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Product/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Shared/Error.cshtml]
+[d:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Shared/_ValidationScriptsPartial.cshtml]
+[d:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ASP_NET_CORE/MyProjects/Ecommerce/Views/_ViewImports.cshtml]
+[d:/ASP_NET_CORE/MyProjects/Ecommerce/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ASP_NET_CORE/MyProjects/Ecommerce/Views/_ViewStart.cshtml]
+[d:/ASP_NET_CORE/MyProjects/Ecommerce/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Shared/_Layout.cshtml]
+[d:/ASP_NET_CORE/MyProjects/Ecommerce/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-jnmo08unka
