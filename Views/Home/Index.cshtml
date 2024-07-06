@@ -34,7 +34,7 @@
                                 <strong>@product.Price ₺</strong>
                                 <div class="d-flex mt-3">
                                     <form asp-action="Cart" asp-controller="Order" method="post">
-                                        <input type="hidden" name="Id" id="p_id" value="@product.ProductId">
+                                        <input type="hidden" name="id" id="p_id" value="@product.ProductId">
                                         <button type="submit" class="btn btn-outline-success">Add to cart</button>
                                     </form>
                                     @if(User.IsInRole("Admin")){

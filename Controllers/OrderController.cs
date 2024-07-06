@@ -11,11 +11,13 @@ public class OrderController:Controller
     {
         _context = context;
     }
-    public Cart Carts { get; set; }
     public IActionResult Cart()
     {
-        Carts = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
-        return View();
+        var cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
+            var viewModel = new CartViewModel{
+                Cart = cart
+            };
+            return View(viewModel);
     }
 
     [HttpPost]
@@ -23,13 +25,13 @@ public class OrderController:Controller
     {
         var product = await _context.Products.FirstOrDefaultAsync(i => i.ProductId == id);
 
-        if(product != null){
-            Carts = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
-            Carts.AddItem(product, 1);
-            HttpContext.Session.SetJson("cart", Carts);
-        }
+            if (product != null){
+                var cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
+                cart.AddItem(product, 1);
+                HttpContext.Session.SetJson("cart", cart);
+            }
 
-        return RedirectToPage("/");
+            return RedirectToAction("Cart");
     }
 
     public async Task<IActionResult> Checkout()
