@@ -1,4 +1,4 @@
-@model CheckoutViewModel
+@* @model CheckoutViewModel *@
 
 <h1>Checkout</h1>
 <hr>
@@ -11,7 +11,7 @@
             @if(ViewBag.User.Address == null || ViewBag.User.City == null || ViewBag.User.Country == null){
                 <a href="/Account/Edit/" class="link-danger">Lütfen adres ekleyiniz...</a>
             } else {
-                <p>Pendik/İstanbul Turkey 34034</p>
+                <p>@ViewBag.User.Address @ViewBag.User.City / @ViewBag.User.Country</p>
             }
         </div>
         <div>
@@ -43,9 +43,9 @@
     <div class="col-7">
         <h4>Add a credit or debit card</h4>
         <hr>
-        <form action="" method="post">
+        <form asp-action="Checkout" asp-controller="Order" method="post">
             <div asp-validation-summary="All"></div>
-            <label asp-for="CardNumber" class="form-label"></label>
+            @* <label asp-for="CardNumber" class="form-label"></label>
             <input type="number" class="form-control" asp-for="CardNumber">
             <div class="row my-3">
                 <div class="col-8">
@@ -56,7 +56,7 @@
                     <label asp-for="Cvc" class="form-label"></label>
                     <input type="number" class="form-control" asp-for="Cvc">
                 </div>
-            </div>
+            </div> *@
             <button type="submit" class="btn btn-success">Complete the shopping</button>
         </form>
     </div>

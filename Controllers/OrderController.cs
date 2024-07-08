@@ -72,8 +72,56 @@ public class OrderController:Controller
 
     [HttpPost]
     [Authorize]
-    public async Task<IActionResult> Checkout(CheckoutViewModel model)
+    public async Task<IActionResult> Checkout(int id)
     {
-        return View();
+        var cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
+        var user = await _context.Users.FirstOrDefaultAsync(x => x.UserName == User.Identity.Name);
+
+        var viewModel = new CartViewModel{
+            Cart = cart
+        };
+
+        ViewBag.Products = viewModel.Cart.Items;
+        ViewBag.Total = viewModel.Cart.CalculateTotal().ToString("C2");
+
+        if(user.Country !=null || user.Address != null || user.City != null){
+            ViewBag.User = user;
+            if(cart.Items.Count == 0){
+                ModelState.AddModelError("", "Sepetinizde ürün yok");
+            }
+        
+            if(ModelState.IsValid){
+                var order = new Order {
+                    ShippingAddress = user.Address,
+                    Country = user.Country,
+                    City = user.City,
+                    OrderDate = DateTime.Now,
+                    ShippingDate = DateTime.Now,
+                    TotalAmount = (double)cart.CalculateTotal(),
+                    UserId = user.Id,
+                    User = user,
+                    OrderItems = cart.Items.Select(x => new OrderItem{
+                        ProductId = x.Product.ProductId,
+                        Price = x.Product.Price,
+                        Quantity = x.Quantity,
+                    }).ToList()
+                };
+                _context.Orders.Add(order);
+                await _context.SaveChangesAsync();
+                cart.Clear();
+                HttpContext.Session.SetJson("cart", cart);
+                return RedirectToAction("Completed", "Order", new { OrderId = order.OrderId});
+            } else {
+                return View();
+            }
+        } else {
+            return RedirectToAction("Edit","Account");
+        }        
+    }
+
+    public async Task<IActionResult> Completed(int OrderId)
+    {
+        var order = await _context.Orders.FirstOrDefaultAsync(x => x.OrderId == OrderId);
+        return View(order);
     }
 }
