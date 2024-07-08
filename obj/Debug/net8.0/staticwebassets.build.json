@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2+4YhKP0uVo/sqywtpfT0fQuexOH6ywYAUqQHuNHMPU=",
+  "Hash": "lr5nBfh8g8VJquHv3Kj+IkL/uqWEFqKuuVKCp7mhCu0=",
   "Source": "Ecommerce",
   "BasePath": "_content/Ecommerce",
   "Mode": "Default",
@@ -338,6 +338,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\user\\21b3b898-5c20-4792-adc5-8bc1e4498ae6.jpg"
+    },
+    {
+      "Identity": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\user\\351fc5c3-cedd-462d-9d23-13b81740922c.jpg",
+      "SourceId": "Ecommerce",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\",
+      "BasePath": "_content/Ecommerce",
+      "RelativePath": "img/user/351fc5c3-cedd-462d-9d23-13b81740922c.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\user\\351fc5c3-cedd-462d-9d23-13b81740922c.jpg"
     },
     {
       "Identity": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\user\\65422884-5014-4509-a715-068e5a92f223.jpg",

@@ -1,4 +1,6 @@
-﻿namespace Ecommerce;
+﻿using Ecommerce.Entity;
+
+namespace Ecommerce;
 
 public class Order
 {
@@ -12,6 +14,17 @@ public class Order
     public string UserId { get; set; }
     public User User{ get; set; }
 
-    public List<ProductOrder> ProductOrders { get; set; } = new List<ProductOrder>();
+    public List<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+}
+
+public class OrderItem
+{
+    public int Id { get; set; }
+    public int OrderId { get; set;}
+    public Order Order { get; set; }
+    public int ProductId { get; set; }
+    public Product Product { get; set; }
+    public double Price { get; set; }
+    public int Quantity { get; set; }
 
 }

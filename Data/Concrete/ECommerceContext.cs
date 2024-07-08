@@ -13,26 +13,12 @@ namespace Ecommerce.Data.Concrete
         public new virtual DbSet<User> Users => Set<User>();
         public virtual DbSet<Product> Products => Set<Product>();
         public virtual DbSet<Order> Orders => Set<Order>();
+        public virtual DbSet<OrderItem> OrderItems => Set<OrderItem>();
         public virtual DbSet<Category> Categorys => Set<Category>();
-        public virtual DbSet<ProductOrder> ProductOrders=> Set<ProductOrder>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Entity<ProductOrder>()
-                .HasKey(po => new { po.ProductId, po.OrderId });
-
-            // ProductOrder: Relationships Configuration
-            modelBuilder.Entity<ProductOrder>()
-                .HasOne(po => po.Product)
-                .WithMany(p => p.ProductOrders)
-                .HasForeignKey(po => po.ProductId);
-
-            modelBuilder.Entity<ProductOrder>()
-                .HasOne(po => po.Order)
-                .WithMany(o => o.ProductOrders)
-                .HasForeignKey(po => po.OrderId);
 
             // User: Relationship with Order
             modelBuilder.Entity<User>()

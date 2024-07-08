@@ -15,7 +15,7 @@ namespace Ecommerce.Entity
         public int CategoryId { get; set; }
         public Category Category{ get; set; } = null;
 
-        public List<ProductOrder> ProductOrders { get; set; } = new List<ProductOrder>();
+        public List<Order> ProductOrders { get; set; } = new List<Order>();
 
     }
 }

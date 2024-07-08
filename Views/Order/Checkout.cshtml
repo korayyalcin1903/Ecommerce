@@ -25,7 +25,7 @@
                         </div>
                         <div class="col-md-10 px-3 py-1">
                             <div class="d-flex align-items-center justify-content-between">
-                                <h6>@item.Product.ProductName</h6>
+                                <h6>@item.Product.ProductName.Substring(0, Math.Min(40, item.Product.ProductName.Length))</h6>
                                 <p class="text-success mx-3"><strong>@item.Product.Price ₺</strong></p>
                             </div>
                             <span class="badge bg-warning">@item.Quantity Tane</span>
@@ -33,14 +33,18 @@
                     </div>
                 </div>
             }
+            <hr>
+            <div class="border">
+                <h6 class="px-3 py-1">Toplam : @ViewBag.Total</h6> 
+            </div>
             </div>
     </div>
 
     <div class="col-7">
-        <div asp-validation-summary="All"></div>
         <h4>Add a credit or debit card</h4>
         <hr>
         <form action="" method="post">
+            <div asp-validation-summary="All"></div>
             <label asp-for="CardNumber" class="form-label"></label>
             <input type="number" class="form-control" asp-for="CardNumber">
             <div class="row my-3">
@@ -50,7 +54,7 @@
                 </div>
                 <div class="col-4"> 
                     <label asp-for="Cvc" class="form-label"></label>
-                    <input type="number" class="form-control" maxlength="3" minlength="3" asp-for="Cvc">
+                    <input type="number" class="form-control" asp-for="Cvc">
                 </div>
             </div>
             <button type="submit" class="btn btn-success">Complete the shopping</button>

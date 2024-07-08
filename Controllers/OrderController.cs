@@ -1,4 +1,5 @@
 ﻿using Ecommerce.Data.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -48,6 +49,7 @@ public class OrderController:Controller
     }
 
     [HttpGet]
+    [Authorize]
     public async Task<IActionResult> Checkout()
     {
         var cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
@@ -56,6 +58,7 @@ public class OrderController:Controller
         };
 
         ViewBag.Products = viewModel.Cart.Items;
+        ViewBag.Total = viewModel.Cart.CalculateTotal().ToString("C2");
 
         var user = await _context.Users.FirstOrDefaultAsync(x => x.UserName == User.Identity.Name);
 
@@ -64,6 +67,13 @@ public class OrderController:Controller
         } else {
             ViewBag.User = user;
         }
+        return View();
+    }
+
+    [HttpPost]
+    [Authorize]
+    public async Task<IActionResult> Checkout(CheckoutViewModel model)
+    {
         return View();
     }
 }
