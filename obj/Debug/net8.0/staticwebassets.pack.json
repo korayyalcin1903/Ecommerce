@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Ecommerce.bundle.scp.css"
     },
     {
+      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\css\\details.css",
+      "PackagePath": "staticwebassets\\css\\details.css"
+    },
+    {
       "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

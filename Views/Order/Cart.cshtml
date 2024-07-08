@@ -3,45 +3,53 @@
 <h3>Cart</h3>
 <hr>
 <div class="row">
-    <div class="col-8">
-        @foreach (var item in Model.Cart.Items ?? Enumerable.Empty<CartItem>())
-        {
-            <div class="card">
-                <div class="row">
-                    <div class="col-md-2">
-                        <img src="~/img/product/@item.Product.Image" class="img-fluid rounded mx-3" width="100px" height="50px" alt="">
-                    </div>
-                    <div class="col-md-10">
-                        <div class="d-flex justify-content-between">
-                            <h5>@item.Product.ProductName.Substring(0, Math.Min(80, item.Product.ProductName.Length))</h5>
-                            <h6 class="text-success mx-3 mt-1"><strong>@item.Product.Price.ToString("C2")</strong></h6>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <span class="badge bg-warning">@item.Quantity Tane</span>
-                            <div class="col-md-4 offset-md-4">
-                                <div class="input-group">
-                                    <form asp-action="Delete" asp-controller="Order" method="post">
-                                        <input type="hidden" name="id" value="@item.Product.ProductId" />
-                                        <button type="submit" class="btn btn-danger d-flex align-items-center rounded mx-2 p-1" style="height: 30px;"><i class="bi bi-trash"></i></button>
-                                    </form>
-                                    <form asp-action="Delete" asp-controller="Order" method="post">
-                                        <input type="hidden" name="id" value="@item.Product.ProductId" />
-                                        <button type="submit" class="btn btn-outline-secondary d-flex align-items-center rounded" type="button" id="button-decrement" style="height: 30px;">-</button>
-                                    </form>
-                                    <input type="text" class="form-control text-center" style="height: 30px;" id="input-number" value="@item.Quantity">
-                                    <form asp-action="Cart" asp-controller="Order" method="post">
-                                        <input type="hidden" name="id" id="p_id" value="@item.Product.ProductId">
-                                        <button type="submit" class="btn btn-outline-secondary d-flex align-items-center" type="button" id="button-increment" style="height: 30px;">+</button>
-                                    </form>
+    <div class="col-12 col-sm-8 col-md-8">
+        @if(Model.Cart.Items != null && Model.Cart.Items.Any()){
+            @foreach (var item in Model.Cart.Items ?? Enumerable.Empty<CartItem>()){
+                    <div class="card">
+                        <div class="row">
+                            <div class="col-2 col-sm-2 col-md-2">
+                                <img src="~/img/product/@item.Product.Image" class="img-fluid rounded mx-3" width="100px" height="50px" alt="">
+                            </div>
+                            <div class="col-10 col-sm-10col-md-10">
+                                <div class="d-flex justify-content-between">
+                                    <h5>@item.Product.ProductName.Substring(0, Math.Min(80, item.Product.ProductName.Length))</h5>
+                                    <h6 class="text-success mx-3 mt-1"><strong>@item.Product.Price.ToString("C2")</strong></h6>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <span class="badge bg-warning">@item.Quantity Tane</span>
+                                    <div class="col-md-4 offset-md-4">
+                                        <div class="d-flex">
+                                            <form asp-action="Delete" asp-controller="Order" method="post">
+                                                <input type="hidden" name="id" value="@item.Product.ProductId" />
+                                                <button type="submit" class="btn btn-danger d-flex align-items-center rounded mx-2 p-1" style="height: 30px;"><i class="bi bi-trash"></i></button>
+                                            </form>
+                                            <div class="input-group">
+                                                <form asp-action="Delete" asp-controller="Order" method="post">
+                                                    <input type="hidden" name="id" value="@item.Product.ProductId" />
+                                                    <button type="submit" class="btn btn-outline-secondary d-flex align-items-center" type="button" id="button-decrement" style="height: 30px;">-</button>
+                                                </form>
+                                                <input type="text" class="form-control text-center" style="height: 30px; width:50px;" id="input-number" value="@item.Quantity">
+                                                <form asp-action="Cart" asp-controller="Order" method="post">
+                                                    <input type="hidden" name="id" id="p_id" value="@item.Product.ProductId">
+                                                    <button type="submit" class="btn btn-outline-secondary d-flex align-items-center" type="button" id="button-increment" style="height: 30px;">+</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+            }
+        } else {
+            <div class="alert alert-warning">
+                Sepetiniz boş
             </div>
         }
+        <a href="/" class="btn btn-success my-3">Alışverişe devam et</a>
     </div>
-    <div class="col-4">
+    <div class="col-12 col-sm-4 col-md-4">
         <div class="card p-3">
             <h5 class="text-dark">Seçilen Ürünler</h5>
             <h3 class="text-success"><strong>@Model.Cart.CalculateTotal().ToString("C2")</strong></h3>

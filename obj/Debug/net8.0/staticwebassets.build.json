@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lr5nBfh8g8VJquHv3Kj+IkL/uqWEFqKuuVKCp7mhCu0=",
+  "Hash": "9cYHf93dQL8UfW82StCrTYrPqkUd/6ODVbGgObqIJEY=",
   "Source": "Ecommerce",
   "BasePath": "_content/Ecommerce",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Ecommerce.bundle.scp.css"
+    },
+    {
+      "Identity": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\css\\details.css",
+      "SourceId": "Ecommerce",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\",
+      "BasePath": "_content/Ecommerce",
+      "RelativePath": "css/details.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\details.css"
     },
     {
       "Identity": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\css\\site.css",

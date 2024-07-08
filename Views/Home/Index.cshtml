@@ -2,7 +2,7 @@
     ViewData["Title"] = "Home Page";
 }
 <div class="row">
-    <div class="col-3">
+    <div class="col-0 col-sm-3 col-md-3 d-none d-sm-block d-md-block">
         <h3>Categories</h3>
         <div class="list-group">
             @foreach(var category in ViewBag.Categories){
@@ -10,13 +10,13 @@
             }
         </div>
     </div>
-    <div class="col-9">
+    <div class="col-12 col-sm-9 col-md-9">
         <div class="d-flex">
             <h3>Products</h3>
             <div class="ms-auto">
                 <form class="d-flex" asp-action="Index" asp-controller="Home" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" name="search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <input class="form-control  " type="search" placeholder="Search" name="search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
                 </form>
             </div>
         </div>

@@ -4,7 +4,7 @@
 <hr>
 
 <div class="row">
-    <div class="col-5">
+    <div class="col-12 col-sm-5 col-md-5">
         <div>
             <h4>Adress</h4>
             <hr>
@@ -20,27 +20,23 @@
             @foreach(var item in ViewBag.Products){
                 <div class="card">
                     <div class="row align-items-center">
-                        <div class="col-md-2">
-                            <img src="~/img/product/@item.Product.Image" class="img-fluid rounded mx-3" width="70px" height="40px" alt="">
-                        </div>
                         <div class="col-md-10 px-3 py-1">
                             <div class="d-flex align-items-center justify-content-between">
-                                <h6>@item.Product.ProductName.Substring(0, Math.Min(40, item.Product.ProductName.Length))</h6>
-                                <p class="text-success mx-3"><strong>@item.Product.Price ₺</strong></p>
+                                <h6>(@item.Product.ProductName.Substring(0, Math.Min(30, item.Product.ProductName.Length))) X @item.Quantity</h6>
+                                <h6 class="mx-1"><strong>@item.Product.Price ₺</strong></h6>
                             </div>
-                            <span class="badge bg-warning">@item.Quantity Tane</span>
                         </div>
                     </div>
                 </div>
             }
             <hr>
-            <div class="border">
+            <div class="border mb-3">
                 <h6 class="px-3 py-1">Toplam : @ViewBag.Total</h6> 
             </div>
             </div>
     </div>
 
-    <div class="col-7">
+    <div class="col-12 col-sm-7 col-md-7">
         <h4>Add a credit or debit card</h4>
         <hr>
         <form asp-action="Checkout" asp-controller="Order" method="post">
