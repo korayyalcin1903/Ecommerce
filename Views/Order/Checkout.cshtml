@@ -8,7 +8,7 @@
         <div>
             <h4>Adress</h4>
             <hr>
-            @if(ViewBag.User.Address == null || ViewBag.User.City || ViewBag.User.Country){
+            @if(ViewBag.User.Address == null || ViewBag.User.City == null || ViewBag.User.Country == null){
                 <a href="/Account/Edit/" class="link-danger">Lütfen adres ekleyiniz...</a>
             } else {
                 <p>Pendik/İstanbul Turkey 34034</p>
@@ -17,21 +17,23 @@
         <div>
             <h5>Products</h5>
             <hr>
-            <div class="card">
-            <div class="row align-items-center">
-                    <div class="col-md-2">
-                        <img src="~/img/product/1.jpg" class="img-fluid rounded mx-3" width="70px" height="40px" alt="">
-                    </div>
-                    <div class="col-md-10 px-3 py-1">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <h6>Product Name</h6>
-                            <p class="text-success mx-3"><strong>8000 ₺</strong></p>
+            @foreach(var item in ViewBag.Products){
+                <div class="card">
+                    <div class="row align-items-center">
+                        <div class="col-md-2">
+                            <img src="~/img/product/@item.Product.Image" class="img-fluid rounded mx-3" width="70px" height="40px" alt="">
                         </div>
-                        <span class="badge bg-warning">5 Tane</span>
+                        <div class="col-md-10 px-3 py-1">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <h6>@item.Product.ProductName</h6>
+                                <p class="text-success mx-3"><strong>@item.Product.Price ₺</strong></p>
+                            </div>
+                            <span class="badge bg-warning">@item.Quantity Tane</span>
+                        </div>
                     </div>
                 </div>
+            }
             </div>
-        </div>
     </div>
 
     <div class="col-7">

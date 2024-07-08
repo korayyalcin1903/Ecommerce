@@ -15,6 +15,18 @@ public class Cart
             item.Quantity += quantity;
         }
     }
+
+    public void DecreaseItem(Product product)
+    {
+        var item = Items.Where(p => p.Product.ProductId == product.ProductId).FirstOrDefault();
+        if(item.Quantity > 1){
+            if(item != null){
+                item.Quantity -= 1;
+            }
+        } else {
+            RemoveItem(product);
+        }
+    }
     public void RemoveItem(Product product)
     {
         Items.RemoveAll(i => i.Product.ProductId == product.ProductId);

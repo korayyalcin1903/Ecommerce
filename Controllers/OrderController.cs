@@ -34,9 +34,31 @@ public class OrderController:Controller
             return RedirectToAction("Cart");
     }
 
+    [HttpPost]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var product = await _context.Products.FirstOrDefaultAsync(i => i.ProductId == id);
+        if(product != null){
+            var cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
+            cart.DecreaseItem(product);
+            HttpContext.Session.SetJson("cart", cart);
+        }
+
+        return RedirectToAction("Cart");
+    }
+
+    [HttpGet]
     public async Task<IActionResult> Checkout()
     {
-        var user = await _context.Users.FirstOrDefaultAsync(x => x.Name == User.Identity.Name);
+        var cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
+        var viewModel = new CartViewModel{
+            Cart = cart
+        };
+
+        ViewBag.Products = viewModel.Cart.Items;
+
+        var user = await _context.Users.FirstOrDefaultAsync(x => x.UserName == User.Identity.Name);
+
         if (user == null){
             return NotFound();
         } else {

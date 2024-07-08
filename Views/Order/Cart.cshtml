@@ -20,13 +20,19 @@
                             <span class="badge bg-warning">@item.Quantity Tane</span>
                             <div class="col-md-4 offset-md-4">
                                 <div class="input-group">
-                                    <form asp-action="RemoveFromCart" method="post" style="display:inline;">
+                                    <form asp-action="Delete" asp-controller="Order" method="post">
                                         <input type="hidden" name="id" value="@item.Product.ProductId" />
                                         <button type="submit" class="btn btn-danger d-flex align-items-center rounded mx-2 p-1" style="height: 30px;"><i class="bi bi-trash"></i></button>
                                     </form>
-                                    <button class="btn btn-outline-secondary d-flex align-items-center rounded" type="button" id="button-decrement-@item.Product.ProductId" style="height: 30px;" data-product-id="@item.Product.ProductId">-</button>
-                                    <input type="text" class="form-control text-center" style="height: 30px;" id="input-number-@item.Product.ProductId" value="@item.Quantity">
-                                    <button class="btn btn-outline-secondary d-flex align-items-center" type="button" id="button-increment-@item.Product.ProductId" style="height: 30px;" data-product-id="@item.Product.ProductId">+</button>
+                                    <form asp-action="Delete" asp-controller="Order" method="post">
+                                        <input type="hidden" name="id" value="@item.Product.ProductId" />
+                                        <button type="submit" class="btn btn-outline-secondary d-flex align-items-center rounded" type="button" id="button-decrement" style="height: 30px;">-</button>
+                                    </form>
+                                    <input type="text" class="form-control text-center" style="height: 30px;" id="input-number" value="@item.Quantity">
+                                    <form asp-action="Cart" asp-controller="Order" method="post">
+                                        <input type="hidden" name="id" id="p_id" value="@item.Product.ProductId">
+                                        <button type="submit" class="btn btn-outline-secondary d-flex align-items-center" type="button" id="button-increment" style="height: 30px;">+</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -39,7 +45,7 @@
         <div class="card p-3">
             <h5 class="text-dark">Seçilen Ürünler</h5>
             <h3 class="text-success"><strong>@Model.Cart.CalculateTotal().ToString("C2")</strong></h3>
-            <a href="/Orders/Checkout" class="btn btn-warning">Procced to checkout</a>
+            <a href="/Order/Checkout" class="btn btn-warning">Procced to checkout</a>
         </div>
     </div>
 </div>
