@@ -1,12 +1,26 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+
+@section Category {
+    <li class="nav-item dropdown d-block d-sm-none d-md-none">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Category
+        </a>
+        <ul class="dropdown-menu">
+            @foreach(var category in ViewBag.Categories){
+                <li><a class="dropdown-item" href="/Category/@category.CategoryName">@category.CategoryName</a></li>
+            }
+        </ul>
+    </li>
+}
+
 <div class="row">
     <div class="col-0 col-sm-3 col-md-3 d-none d-sm-block d-md-block">
         <h3>Categories</h3>
-        <div class="list-group">
+        <div class="list-group bg-light">
             @foreach(var category in ViewBag.Categories){
-                <a href="/Category/@category.CategoryName" class="list-group-item list-group-item-action">@category.CategoryName</a>
+                <a href="/Category/@category.CategoryName" class="list-group-item list-group-item-action bg-light">@category.CategoryName</a>
             }
         </div>
     </div>
@@ -21,32 +35,72 @@
             </div>
         </div>
         <hr>
+        <div id="carouselExampleAutoplaying" class="carousel slide mb-3" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                <img src="~/img/slider/1.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                <img src="~/img/slider/2.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                <img src="~/img/slider/3.jpg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
         <div class="row">
-            @foreach(var product in Model){
-                <div class="card mb-3 col-6 col-sm-6 col-md-4">
-                    <div class="text-start">
-                        <div class="">
-                        <a href="product/details/@product.ProductId"><img src="~/img/product/@product.Image" class="img-fluid rounded" alt="..."></a>
-                        </div>
-                        <div class="">
-                            <div class="card-body">
-                                <a href="product/details/@product.ProductId" style="text-decoration: none;" class="text-dark"><h5 class="card-title">@product.ProductName.Substring(0, Math.Min(40, product.ProductName.Length))...</h5></a>
-                                <strong>@product.Price ₺</strong>
-                                <div class="d-flex mt-3">
-                                    <form asp-action="Cart" asp-controller="Order" method="post">
-                                        <input type="hidden" name="id" id="p_id" value="@product.ProductId">
-                                        <button type="submit" class="btn btn-outline-success">Add to cart</button>
-                                    </form>
-                                    @if(User.IsInRole("Admin")){
-                                        <a href="Product/Edit/@product.ProductId" class="btn btn-outline-warning mx-1">Edit</a>
-                                        <a href="Product/Delete/@product.ProductId" class="btn btn-outline-danger">Delete</a>
-                                    }
+                @foreach(var product in Model){
+                    <div class="mb-3 col-6 col-sm-4 col-md-4">
+                        <div class="card">
+                            <div class="text-start">
+                                <div class="">
+                                <a href="product/details/@product.ProductId"><img src="~/img/product/@product.Image" class="img-fluid rounded" alt="..."></a>
+                                </div>
+                                <div class="">
+                                    <div class="card-body">
+                                        <a href="product/details/@product.ProductId" style="text-decoration: none;" class="text-dark"><h5 class="card-title">@product.ProductName.Substring(0, Math.Min(40, product.ProductName.Length))...</h5></a>
+                                        <strong>@product.Price ₺</strong>
+                                        <div class="d-flex mt-3">
+                                            <form asp-action="Cart" asp-controller="Order" method="post">
+                                                <input type="hidden" name="id" id="p_id" value="@product.ProductId">
+                                                <button type="submit" class="btn btn-outline-success">Add to cart</button>
+                                            </form>
+                                            @if(User.IsInRole("Admin")){
+                                                <a href="Product/Edit/@product.ProductId" class="btn btn-outline-warning mx-1">Edit</a>
+                                                <a href="Product/Delete/@product.ProductId" class="btn btn-outline-danger">Delete</a>
+                                            }
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
-            }
+                }
+        </div>
+        <div class="d-flex justify-content-center">
+            <nav aria-label="Page navigation example">
+                <form asp-action="Index" asp-controller="Home" method="get">
+                    <ul class="pagination">
+                        <li class="page-item"><button type="submit" name="page" value="@ViewBag.CurrentPage" class="page-link">Previous</button></li>
+                            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                            {
+                                <li class="page-item @(ViewBag.CurrentPage == i ? "active" : "")">
+                                    <button type="submit" name="page" value="@i" class="page-link">@i</button>
+                                </li>
+                            }
+                        <li class="page-item"><button type="submit" name="page" value="@ViewBag.NextPage" class="page-link">Next</button></li>
+                    </ul>
+                </form>
+
+            </nav>
         </div>
     </div>
     </div>
