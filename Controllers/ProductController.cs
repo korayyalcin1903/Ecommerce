@@ -166,7 +166,7 @@ public class ProductController: Controller
 
     [Authorize(Roles = "Admin")]
     [HttpPost]
-    public async Task<IActionResult> Delete(int id, string productId)
+    public async Task<IActionResult> Delete(int? id, string productId)
     {
         if(id == null){
             return NotFound();

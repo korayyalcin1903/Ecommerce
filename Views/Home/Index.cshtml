@@ -57,51 +57,60 @@
             </button>
         </div>
         <div class="row">
-                @foreach(var product in Model){
-                    <div class="mb-3 col-6 col-sm-4 col-md-4">
-                        <div class="card">
-                            <div class="text-start">
-                                <div class="">
-                                <a href="product/details/@product.ProductId"><img src="~/img/product/@product.Image" class="img-fluid rounded" alt="..."></a>
-                                </div>
-                                <div class="">
-                                    <div class="card-body">
-                                        <a href="product/details/@product.ProductId" style="text-decoration: none;" class="text-dark"><h5 class="card-title">@product.ProductName.Substring(0, Math.Min(40, product.ProductName.Length))...</h5></a>
-                                        <strong>@product.Price ₺</strong>
-                                        <div class="d-flex mt-3">
-                                            <form asp-action="Cart" asp-controller="Order" method="post">
-                                                <input type="hidden" name="id" id="p_id" value="@product.ProductId">
-                                                <button type="submit" class="btn btn-outline-success">Add to cart</button>
-                                            </form>
-                                            @if(User.IsInRole("Admin")){
-                                                <a href="Product/Edit/@product.ProductId" class="btn btn-outline-warning mx-1">Edit</a>
-                                                <a href="Product/Delete/@product.ProductId" class="btn btn-outline-danger">Delete</a>
-                                            }
+                @if(Model.Count > 0){
+                    @foreach(var product in Model){
+                        <div class="mb-3 col-6 col-sm-4 col-md-4">
+                            <div class="card">
+                                <div class="text-start">
+                                    <div class="">
+                                    <a href="product/details/@product.ProductId"><img src="~/img/product/@product.Image" class="img-fluid rounded" alt="..."></a>
+                                    </div>
+                                    <div class="">
+                                        <div class="card-body">
+                                            <a href="product/details/@product.ProductId" style="text-decoration: none;" class="text-dark"><h5 class="card-title">@product.ProductName.Substring(0, Math.Min(40, product.ProductName.Length))...</h5></a>
+                                            <strong>@product.Price ₺</strong>
+                                            <div class="d-flex mt-3">
+                                                <form asp-action="Cart" asp-controller="Order" method="post">
+                                                    <input type="hidden" name="id" id="p_id" value="@product.ProductId">
+                                                    <button type="submit" class="btn btn-outline-success">Add to cart</button>
+                                                </form>
+                                                @if(User.IsInRole("Admin")){
+                                                    <a href="Product/Edit/@product.ProductId" class="btn btn-outline-warning mx-1">Edit</a>
+                                                    <a href="Product/Delete/@product.ProductId" class="btn btn-outline-danger">Delete</a>
+                                                }
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                </div>
+                    }
+                } else {
+                    <div class="px-2">
+                        <div class="alert alert-success" role="alert">
+                            Unfortunately no products found
+                        </div>
+                    </div>
                 }
+                
         </div>
         <div class="d-flex justify-content-center">
             <nav aria-label="Page navigation example">
                 <form asp-action="Index" asp-controller="Home" method="get">
                     <ul class="pagination">
-                        <li class="page-item"><button type="submit" name="page" value="@ViewBag.CurrentPage" class="page-link">Previous</button></li>
+                        <li class="page-item"><button type="submit" name="page" value="@ViewBag.CurrentPage" class="page-link text-dark">Previous</button></li>
                             @for (int i = 1; i <= ViewBag.TotalPages; i++)
                             {
                                 @if(i >= ViewBag.CurrentPage && i <= ViewBag.NextPage){
                                     <li class="page-item @(ViewBag.Page == i ? "active" : "")">
-                                        <button type="submit" name="page" value="@i" class="page-link">@i</button>
+                                        <button type="submit" name="page" value="@i" class="page-link text-dark">@i</button>
                                     </li>
                                 }
                             }
                             @if(ViewBag.NextPage == ViewBag.TotalPages){
-                                <li class="page-item"><button type="submit" name="page" value="@ViewBag.NextPage" class="page-link">Last</button></li>
+                                <li class="page-item"><button type="submit" name="page" value="@ViewBag.NextPage" class="page-link text-dark">Last</button></li>
                             } else {
-                                <li class="page-item"><button type="submit" name="page" value="@ViewBag.NextPage" class="page-link">Next</button></li>
+                                <li class="page-item"><button type="submit" name="page" value="@ViewBag.NextPage" class="page-link text-dark">Next</button></li>
                             }
                     </ul>
                 </form>

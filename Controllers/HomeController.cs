@@ -31,7 +31,7 @@ public class HomeController : Controller
             products = products.Where(x => x.CategoryId == categoryEntity.CategoryId).ToList();
 
             if(!string.IsNullOrEmpty(search)){
-            products = await _context.Products.Where(x => x.ProductName.Contains(search)).ToListAsync();
+            products = await _context.Products.Where(x => x.ProductName.Contains(search) && x.CategoryId == categoryEntity.CategoryId).ToListAsync();
             totalPages = pagination.TotalPages(products.Count());
             ViewBag.TotalPages = totalPages;
 
