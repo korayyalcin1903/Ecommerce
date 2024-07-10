@@ -43,6 +43,7 @@ public class HomeController : Controller
                 var skipAmount = (page - 1) * pagination.PageSize;
                 ViewBag.CurrentPage = page > 1 ? page - 1 : page;
                 ViewBag.NextPage = page < totalPages ? page + 1 : page;
+                ViewBag.Page = page;
             }
             return View(products);
             }
@@ -59,6 +60,7 @@ public class HomeController : Controller
                 products = await _context.Products.Where(x => x.CategoryId == categoryEntity.CategoryId).Skip((int)skipAmount).Take((int)pagination.PageSize).ToListAsync();
                 ViewBag.CurrentPage = page > 1 ? page - 1 : page;
                 ViewBag.NextPage = page < totalPages ? page + 1 : page;
+                ViewBag.Page = page;
             }
 
             
@@ -83,6 +85,8 @@ public class HomeController : Controller
             products = await _context.Products.Skip((int)skipAmount).Take((int)pagination.PageSize).ToListAsync();
             ViewBag.CurrentPage = page > 1 ? page - 1 : page;
             ViewBag.NextPage = page < totalPages ? page + 1 : page;
+            ViewBag.Page = page;
+
         }
 
         return View(products);

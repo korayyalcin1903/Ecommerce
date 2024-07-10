@@ -92,11 +92,17 @@
                         <li class="page-item"><button type="submit" name="page" value="@ViewBag.CurrentPage" class="page-link">Previous</button></li>
                             @for (int i = 1; i <= ViewBag.TotalPages; i++)
                             {
-                                <li class="page-item @(ViewBag.CurrentPage == i ? "active" : "")">
-                                    <button type="submit" name="page" value="@i" class="page-link">@i</button>
-                                </li>
+                                @if(i >= ViewBag.CurrentPage && i <= ViewBag.NextPage){
+                                    <li class="page-item @(ViewBag.Page == i ? "active" : "")">
+                                        <button type="submit" name="page" value="@i" class="page-link">@i</button>
+                                    </li>
+                                }
                             }
-                        <li class="page-item"><button type="submit" name="page" value="@ViewBag.NextPage" class="page-link">Next</button></li>
+                            @if(ViewBag.NextPage == ViewBag.TotalPages){
+                                <li class="page-item"><button type="submit" name="page" value="@ViewBag.NextPage" class="page-link">Last</button></li>
+                            } else {
+                                <li class="page-item"><button type="submit" name="page" value="@ViewBag.NextPage" class="page-link">Next</button></li>
+                            }
                     </ul>
                 </form>
 
@@ -105,3 +111,4 @@
     </div>
     </div>
 </div>
+
