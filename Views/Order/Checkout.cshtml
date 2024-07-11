@@ -1,17 +1,17 @@
-@* @model CheckoutViewModel *@
+@model CheckoutViewModel
 
 <h1>Checkout</h1>
 <hr>
 
 <div class="row">
-    <div class="col-12 col-sm-5 col-md-5">
+    <div class="col-12 col-sm-6 col-md-6">
         <div>
             <h4>Adress</h4>
             <hr>
             @if(ViewBag.User.Address == null || ViewBag.User.City == null || ViewBag.User.Country == null){
                 <a href="/Account/Edit/" class="link-danger">Lütfen adres ekleyiniz...</a>
             } else {
-                <p>@ViewBag.User.Address @ViewBag.User.City / @ViewBag.User.Country</p>
+                <p>@ViewBag.User.Address - @ViewBag.User.City / @ViewBag.User.Country</p>
             }
         </div>
         <div>
@@ -23,7 +23,7 @@
                         <div class="col-md-10 px-3 py-1">
                             <div class="d-flex align-items-center justify-content-between">
                                 <h6>(@item.Product.ProductName.Substring(0, Math.Min(30, item.Product.ProductName.Length))) X @item.Quantity</h6>
-                                <h6 class="mx-1"><strong>@item.Product.Price ₺</strong></h6>
+                                <h6 class="mx-1"><strong>@(item.Product.Price * item.Quantity) ₺</strong></h6>
                             </div>
                         </div>
                     </div>
@@ -36,23 +36,33 @@
             </div>
     </div>
 
-    <div class="col-12 col-sm-7 col-md-7">
+    <div class="col-12 col-sm-6 col-md-6">
         <h4>Add a credit or debit card</h4>
         <hr>
         <form asp-action="Checkout" asp-controller="Order" method="post">
             <div asp-validation-summary="All"></div>
-            @* <label asp-for="CardNumber" class="form-label"></label>
-            <input type="number" class="form-control" asp-for="CardNumber">
+            <div class="mb-3">
+                <label asp-for="CardHolderName" class="form-label"></label>
+                <input type="text" class="form-control" asp-for="CardHolderName">
+            </div>
+            <div class="mb-3">
+                <label asp-for="CardNumber" class="form-label"></label>
+                <input type="number" class="form-control" asp-for="CardNumber">
+            </div>
             <div class="row my-3">
-                <div class="col-8">
-                    <label asp-for="ExpirationDate" class="form-label"></label>
-                    <input type="month" class="form-control" asp-for="ExpirationDate">
+                <div class="col-3">
+                    <label asp-for="ExpirationMonth" class="form-label"></label>
+                    <input type="number" class="form-control" asp-for="ExpirationMonth">
                 </div>
-                <div class="col-4"> 
+                <div class="col-3">
+                    <label asp-for="ExpirationYear" class="form-label"></label>
+                    <input type="number" class="form-control" asp-for="ExpirationYear">
+                </div>
+                <div class="col-6"> 
                     <label asp-for="Cvc" class="form-label"></label>
                     <input type="number" class="form-control" asp-for="Cvc">
                 </div>
-            </div> *@
+            </div>
             <button type="submit" class="btn btn-success">Complete the shopping</button>
         </form>
     </div>
