@@ -191,8 +191,8 @@ public class OrderController:Controller
     private Payment ProcessPayment(CheckoutViewModel model, Order order)
     {
         Options options = new Options();
-        options.ApiKey = "sandbox-glyYLHAMOocVLFIb7Nh75Hf7UhHT2IHS";
-        options.SecretKey = "sandbox-rTF6olehlzEFCdB6fEd9Fc2MA0GVsT3x";
+        options.ApiKey = "apikey";
+        options.SecretKey = "secretkey";
         options.BaseUrl = "https://sandbox-api.iyzipay.com";
                 
         CreatePaymentRequest request = new CreatePaymentRequest();
