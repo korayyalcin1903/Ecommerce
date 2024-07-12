@@ -1,0 +1,11 @@
+<h3>Delete Order</h3>
+<hr>
+
+<strong>#@Model.OrderId</strong> numaralı siparişi silmek istediğinizden emin misiniz?
+<div class="d-flex gap-1 mt-3">
+    <form asp-action="DeleteOrder" asp-controller="Order" method="post">
+        <input type="hidden" name="id" value="@Model.OrderId">
+        <button type="submit" class="btn btn-danger">Evet</button>
+    </form>
+    <a href="/Order/Orders" class="btn btn-success">Hayır</a>
+</div>

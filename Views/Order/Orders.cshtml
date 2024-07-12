@@ -1,0 +1,31 @@
+<h3>Orders</h3>
+<hr>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Order Id</td>
+            <td>Order Date</td>
+            <td>Shipping Address</td>
+            <td>Total Amount</td>
+            <td>User Id</td>
+            <td>Edit</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model){
+            <tr>
+                <td>@item.OrderId</td>
+                <td>@item.OrderDate.ToString("dd.mm.yyyy")</td>
+                <td>@item.ShippingAddress.Substring(0, Math.Min(50, item.ShippingAddress.Length))...</td>
+                <td>@item.TotalAmount</td>
+                <td>@item.UserId</td>
+                @if(User.IsInRole("Admin")){
+                    <td>
+                        <a href="/Order/Details/@item.OrderId" class="btn btn-warning btn-sm">Details</a>
+                        <a href="/Order/DeleteOrder/@item.OrderId" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

@@ -33,10 +33,16 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" href="/">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
                         @if(User.IsInRole("Admin")){
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-controller="Order" asp-action="Orders">Orders</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-controller="Users" asp-action="Index">Users</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-controller="Category" asp-action="Index">Category</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link text-light" asp-controller="Product" asp-action="Create">Create</a>
                             </li>
@@ -81,7 +87,7 @@
 
     <footer class="border-top footer bg-dark text-muted">
         <div class="container text-light">
-            &copy; 2024 - Ecommerce - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2024 - Ecommerce
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

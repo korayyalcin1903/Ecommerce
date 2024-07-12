@@ -50,6 +50,31 @@
                         <label asp-for="PostalCode" class="form-label"></label>
                         <input asp-for="PostalCode" class="form-control">            
                     </div>
+                    <div class="mb-3">
+                        <label asp-for="Gender" class="form-label"></label>
+                        <div class="d-flex gap-3">
+                            <div class="form-check">
+                                @if(Model.Gender == false){
+                                    <input class="form-check-input" type="radio" asp-for="Gender" value="false" checked>
+                                } else {
+                                    <input class="form-check-input" type="radio" asp-for="Gender" value="false">
+                                }
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Male
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                @if(Model.Gender == true){
+                                    <input class="form-check-input" type="radio" asp-for="Gender" value="true" checked>
+                                } else {
+                                    <input class="form-check-input" type="radio" asp-for="Gender" value="true">
+                                }
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Female
+                                </label>
+                            </div>           
+                        </div>
+                    </div>
                 </div>
             </div>
             <button type="submit" class="btn btn-outline-success w-100">Edit</button>

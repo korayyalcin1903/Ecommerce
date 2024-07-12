@@ -10,7 +10,7 @@ public class AccountController:Controller
 {
     public readonly UserManager<User> _userManager;
     public readonly SignInManager<User> _signInManager;
-    public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+    public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, EcommerceContext context)
     {
         _userManager = userManager;
         _signInManager = signInManager;
@@ -207,4 +207,7 @@ public class AccountController:Controller
         }
         return View(model);
     }
+
+
+
 }

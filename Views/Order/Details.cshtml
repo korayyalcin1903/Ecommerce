@@ -1,0 +1,55 @@
+@model ProductOrderViewModel
+<h3>Order Details</h3>
+<hr>
+
+<table class="table table-striped table-bordered">
+
+        <tr>
+            <td>Order Id</td><td>@Model.Order.OrderId</td>
+        </tr>
+        <tr>
+            <td>Order Date</td><td>@Model.Order.OrderDate</td>
+        </tr>
+        <tr>
+            <td>Shipping Date</td><td>@Model.Order.ShippingDate</td>
+        </tr>
+        <tr>
+            <td>Shipping Address</td><td>@Model.Order.ShippingAddress - @Model.Order.City/@Model.Order.Country</td>
+        </tr>
+        <tr>
+            <td>Total Amount</td><td>@Model.Order.TotalAmount ₺</td>
+        </tr>
+        <tr>
+            <td>User Id</td><td>@Model.Order.UserId</td>
+        </tr>
+    
+</table>
+
+<h3>Products</h3>
+<hr>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Product Id</td>
+            <td>Name</td>
+            <td>Price</td>
+            <td>Image</td>
+            <td>Amount</td>
+            <td>Category</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.OrderItems){
+            var product = Model.Products.FirstOrDefault(x => x.ProductId == item.ProductId);
+
+            <tr>
+                <td>@product.ProductId</td>
+                <td>@product.ProductName</td>
+                <td>@product.Price</td>
+                <td><img src="~/img/product/@product.Image" width="60px" height="60px" alt=""></td>
+                <td>@item.Quantity</td>
+                <td>@product.CategoryId</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,11 @@
+<h3>Delete User</h3>
+<hr>
+
+<strong>#@Model.Id</strong> numaralı kullanıcıyı silmek istediğinizden emin misiniz?
+<div class="d-flex gap-1 mt-3">
+    <form asp-action="Delete" asp-controller="Users" method="post">
+        <input type="hidden" name="id" value="@Model.Id">
+        <button type="submit" class="btn btn-danger">Evet</button>
+    </form>
+    <a href="/Users" class="btn btn-success">Hayır</a>
+</div>

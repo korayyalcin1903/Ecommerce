@@ -1,0 +1,30 @@
+<h3>Users</h3>
+<hr>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>FullName</td>
+            <td>UserName</td>
+            <td>Email</td>
+            <td>Avatar</td>
+            <td>Created Date</td>
+            <td>Updated Date</td>
+            <td>Delete</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var user in Model){
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.Name @user.Surname</td>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+                <td><img src="~/img/user/@user.Avatar" class="rounded" width="40px" height="40px" alt=""></td>
+                <td>@user.CreatedDate.ToString("dd.mm.yyyy")</td>
+                <td>@user.UpdatedDate.ToString("dd.mm.yyyy")</td>
+                <td><a href="/Users/Delete/@user.Id" class="btn btn-danger btn-sm">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

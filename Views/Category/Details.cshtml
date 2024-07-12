@@ -1,0 +1,33 @@
+<h3>Porducts - @ViewBag.Category</h3>
+<hr>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Product Id</td>
+            <td>Product Name</td>
+            <td>Price</td>
+            <td>Image</td>
+            <td>Created Date</td>
+            <td>Updated Date</td>
+            <td>Edit</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model){
+            <tr>
+                <td>@item.ProductId</td>
+                <td>@item.ProductName</td>
+                <td>@item.Price</td>
+                <td><img src="~/img/product/@item.Image" width="50px" height="50px" alt=""></td>
+                <td>@item.CreatedDate.ToString("dd.mm.yyyy")</td>
+                <td>@item.UpdatedDate.ToString("dd.mm.yyyy")</td>
+                @if(User.IsInRole("Admin")){
+                    <td>
+                        <a href="/Order/Details/@item.ProductId" class="btn btn-warning btn-sm">Details</a>
+                        <a href="/Order/DeleteOrder/@item.ProductId" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

@@ -52,6 +52,58 @@ public class OrderController:Controller
     }
 
     [HttpGet]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> Orders()
+    {
+        var orders = await _context.Orders.ToListAsync();
+        return View(orders);
+    }
+
+    [HttpGet]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> Details(int id){
+        var order = await _context.Orders.FirstOrDefaultAsync(x => x.OrderId == id);
+        var orderItems = await _context.OrderItems.Where(x => x.OrderId == id).ToListAsync();
+        var products = await _context.Products.ToListAsync();
+
+        var viewModel = new ProductOrderViewModel{
+            Order = order,
+            Products = products,
+            OrderItems = orderItems
+        };
+        
+        if(order != null){
+            return View(viewModel);
+        } else {
+            return NotFound();
+        }
+    }
+
+    [HttpGet]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> DeleteOrder(int id){
+        var order = await _context.Orders.FirstOrDefaultAsync(x => x.OrderId == id);
+        if(order != null){
+            return View(order);
+        } else {
+            return NotFound();
+        }
+    }
+
+    [HttpPost]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> DeleteOrder(int id, string nameassw){
+        var order = await _context.Orders.FirstOrDefaultAsync(x => x.OrderId == id);
+        if(order != null){
+            _context.Remove(order);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Orders","Order");
+        } else {
+            return NotFound();
+        }
+    }
+
+    [HttpGet]
     [Authorize]
     public async Task<IActionResult> Checkout()
     {
