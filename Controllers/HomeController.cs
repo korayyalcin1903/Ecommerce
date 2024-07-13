@@ -24,7 +24,8 @@ public class HomeController : Controller
         var totalPages = pagination.TotalPages(_context.Products.Count());
         
         ViewBag.TotalPages = totalPages;
-        ViewBag.Categories = await _context.Categorys.ToListAsync();
+        ViewBag.Categories = await _context.Categorys.Where(x => x.ParentCategoryId == null).ToListAsync();
+        ViewBag.SubCategories = await _context.Categorys.Where(x => x.ParentCategoryId != null).ToListAsync();
 
         if(!string.IsNullOrEmpty(category)){
             var categoryEntity = await _context.Categorys.FirstAsync(x => x.CategoryName == category);

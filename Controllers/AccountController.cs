@@ -155,7 +155,8 @@ public class AccountController:Controller
                     Address = user.Address,
                     City = user.City,
                     Country = user.Country,
-                    Gender = user.Gender
+                    Gender = user.Gender,
+                    PostalCode = user.PostalCode
                 };
 
                 return View(model);

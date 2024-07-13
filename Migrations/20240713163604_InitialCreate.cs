@@ -93,11 +93,16 @@ namespace Ecommerce.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     CategoryName = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CategoryCategoryId = table.Column<int>(type: "int", nullable: true)
+                    ParentCategoryId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categorys", x => x.CategoryId);
+                    table.ForeignKey(
+                        name: "FK_Categorys_Categorys_ParentCategoryId",
+                        column: x => x.ParentCategoryId,
+                        principalTable: "Categorys",
+                        principalColumn: "CategoryId");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -229,35 +234,6 @@ namespace Ecommerce.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Orders",
-                columns: table => new
-                {
-                    OrderId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    OrderDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    ShippingDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    ShippingAddress = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    City = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Country = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    TotalAmount = table.Column<double>(type: "double", nullable: false),
-                    UserId = table.Column<string>(type: "varchar(255)", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Orders", x => x.OrderId);
-                    table.ForeignKey(
-                        name: "FK_Orders_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "Products",
                 columns: table => new
                 {
@@ -289,23 +265,62 @@ namespace Ecommerce.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "ProductOrders",
+                name: "Orders",
                 columns: table => new
                 {
-                    ProductId = table.Column<int>(type: "int", nullable: false),
                     OrderId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    OrderDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    ShippingDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    ShippingAddress = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    City = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Country = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    TotalAmount = table.Column<double>(type: "double", nullable: false),
+                    UserId = table.Column<string>(type: "varchar(255)", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ProductId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductOrders", x => new { x.ProductId, x.OrderId });
+                    table.PrimaryKey("PK_Orders", x => x.OrderId);
                     table.ForeignKey(
-                        name: "FK_ProductOrders_Orders_OrderId",
+                        name: "FK_Orders_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Orders_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "ProductId");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "OrderItems",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    OrderId = table.Column<int>(type: "int", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    Price = table.Column<double>(type: "double", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderItems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OrderItems_Orders_OrderId",
                         column: x => x.OrderId,
                         principalTable: "Orders",
                         principalColumn: "OrderId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProductOrders_Products_ProductId",
+                        name: "FK_OrderItems_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "ProductId",
@@ -351,14 +366,29 @@ namespace Ecommerce.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Categorys_ParentCategoryId",
+                table: "Categorys",
+                column: "ParentCategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderItems_OrderId",
+                table: "OrderItems",
+                column: "OrderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderItems_ProductId",
+                table: "OrderItems",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_ProductId",
+                table: "Orders",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Orders_UserId",
                 table: "Orders",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProductOrders_OrderId",
-                table: "ProductOrders",
-                column: "OrderId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",
@@ -385,7 +415,7 @@ namespace Ecommerce.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "ProductOrders");
+                name: "OrderItems");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -394,10 +424,10 @@ namespace Ecommerce.Migrations
                 name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "Categorys");

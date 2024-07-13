@@ -17,8 +17,8 @@ public static class SeedData
 
         if(!context.Categorys.Any()){
             context.Categorys.AddRange(
-                new Category { CategoryId = 1, CategoryName = "Telefon"},
-                new Category { CategoryId = 2, CategoryName = "Bilgisayar"}
+                new Category { CategoryName = "Telefon", ParentCategoryId = null},
+                new Category { CategoryName = "Bilgisayar", ParentCategoryId = null}
             );
             context.SaveChanges();
         }

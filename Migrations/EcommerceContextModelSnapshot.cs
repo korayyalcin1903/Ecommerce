@@ -30,13 +30,15 @@ namespace Ecommerce.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("CategoryId"));
 
-                    b.Property<int?>("CategoryCategoryId")
-                        .HasColumnType("int");
-
                     b.Property<string>("CategoryName")
                         .HasColumnType("longtext");
 
+                    b.Property<int?>("ParentCategoryId")
+                        .HasColumnType("int");
+
                     b.HasKey("CategoryId");
+
+                    b.HasIndex("ParentCategoryId");
 
                     b.ToTable("Categorys");
                 });
@@ -377,6 +379,15 @@ namespace Ecommerce.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("Ecommerce.Category", b =>
+                {
+                    b.HasOne("Ecommerce.Category", "ParentCategory")
+                        .WithMany()
+                        .HasForeignKey("ParentCategoryId");
+
+                    b.Navigation("ParentCategory");
                 });
 
             modelBuilder.Entity("Ecommerce.Entity.Product", b =>

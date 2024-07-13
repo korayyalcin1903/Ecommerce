@@ -1,4 +1,4 @@
-﻿@{
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -9,7 +9,10 @@
         </a>
         <ul class="dropdown-menu">
             @foreach(var category in ViewBag.Categories){
-                <li><a class="dropdown-item" href="/Category/@category.CategoryName">@category.CategoryName</a></li>
+                <li><a class="dropdown-item" href="/Category/@category.CategoryName">@category.CategoryName</a></li>                
+            }
+            @foreach(var subcategory in ViewBag.SubCategories){
+                <li><a class="dropdown-item" href="/Category/@subcategory.CategoryName">@subcategory.CategoryName</a></li>                
             }
         </ul>
     </li>
@@ -19,7 +22,7 @@
     <div class="col-0 col-sm-3 col-md-3 d-none d-sm-block d-md-block">
         <h3>Categories</h3>
         <div class="list-group bg-light">
-            @foreach(var category in ViewBag.Categories){
+            @foreach (var category in ViewBag.Categories){
                 <a href="/Category/@category.CategoryName" class="list-group-item list-group-item-action bg-light">@category.CategoryName</a>
             }
         </div>
