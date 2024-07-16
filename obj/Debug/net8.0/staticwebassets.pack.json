@@ -17,12 +17,8 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\product\\00604729-c189-42fa-9d7d-69fb5dc8b6ff.jpg",
-      "PackagePath": "staticwebassets\\img\\product\\00604729-c189-42fa-9d7d-69fb5dc8b6ff.jpg"
-    },
-    {
-      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\product\\0519713b-ec0d-49d1-9dcf-b65d2f1af485.jpg",
-      "PackagePath": "staticwebassets\\img\\product\\0519713b-ec0d-49d1-9dcf-b65d2f1af485.jpg"
+      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\product\\0ae15b43-08fd-42aa-ab80-4af6f0a12d6f.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\0ae15b43-08fd-42aa-ab80-4af6f0a12d6f.jpg"
     },
     {
       "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\product\\1.jpg",
@@ -33,28 +29,36 @@
       "PackagePath": "staticwebassets\\img\\product\\2.jpg"
     },
     {
-      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\product\\22ac03c5-bfee-4d0b-bbb2-4e699bf6fe34.jpg",
-      "PackagePath": "staticwebassets\\img\\product\\22ac03c5-bfee-4d0b-bbb2-4e699bf6fe34.jpg"
-    },
-    {
-      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\product\\23ab2ccb-007c-48bd-8361-9c0b96e6dee7.jpg",
-      "PackagePath": "staticwebassets\\img\\product\\23ab2ccb-007c-48bd-8361-9c0b96e6dee7.jpg"
-    },
-    {
       "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\product\\3.jpg",
       "PackagePath": "staticwebassets\\img\\product\\3.jpg"
     },
     {
-      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\product\\69564753-5d98-4c55-866c-e69f13179be5.jpg",
-      "PackagePath": "staticwebassets\\img\\product\\69564753-5d98-4c55-866c-e69f13179be5.jpg"
+      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\product\\385dd606-2051-48ea-a505-50aff964f194.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\385dd606-2051-48ea-a505-50aff964f194.jpg"
     },
     {
-      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\product\\7f23b899-a55a-4036-b8a3-baec5eb31dde.jpg",
-      "PackagePath": "staticwebassets\\img\\product\\7f23b899-a55a-4036-b8a3-baec5eb31dde.jpg"
+      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\product\\6b23b94c-39f3-4d6a-b2c9-721590da8dda.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\6b23b94c-39f3-4d6a-b2c9-721590da8dda.jpg"
     },
     {
-      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\product\\8fedb518-5fdc-4a26-a345-379ab8be317c.jpg",
-      "PackagePath": "staticwebassets\\img\\product\\8fedb518-5fdc-4a26-a345-379ab8be317c.jpg"
+      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\product\\97755e67-bbf0-493d-b01e-aa35f9497e46.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\97755e67-bbf0-493d-b01e-aa35f9497e46.jpg"
+    },
+    {
+      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\product\\9d8827de-8923-4914-9af1-2ed7eebd8928.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\9d8827de-8923-4914-9af1-2ed7eebd8928.jpg"
+    },
+    {
+      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\product\\b63519b7-d5c3-4e19-8f2f-442df36c42f7.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\b63519b7-d5c3-4e19-8f2f-442df36c42f7.jpg"
+    },
+    {
+      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\product\\d66b45ca-18df-4e4c-8457-9c5a3c3aeae4.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\d66b45ca-18df-4e4c-8457-9c5a3c3aeae4.jpg"
+    },
+    {
+      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\product\\eb57b4a8-ad3d-4f0c-b404-400d839bd925.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\eb57b4a8-ad3d-4f0c-b404-400d839bd925.jpg"
     },
     {
       "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\slider\\1.jpg",
@@ -69,60 +73,20 @@
       "PackagePath": "staticwebassets\\img\\slider\\3.jpg"
     },
     {
-      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\user\\0b69ade8-3478-4427-b183-d2c20c05beea.jpg",
-      "PackagePath": "staticwebassets\\img\\user\\0b69ade8-3478-4427-b183-d2c20c05beea.jpg"
-    },
-    {
       "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\user\\1.jpg",
       "PackagePath": "staticwebassets\\img\\user\\1.jpg"
     },
     {
-      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\user\\1e37da58-0f5a-4a26-b31c-85ca2031b23c.jpg",
-      "PackagePath": "staticwebassets\\img\\user\\1e37da58-0f5a-4a26-b31c-85ca2031b23c.jpg"
+      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\user\\1981d405-2160-4467-8ba4-c1e91982cc00.jpg",
+      "PackagePath": "staticwebassets\\img\\user\\1981d405-2160-4467-8ba4-c1e91982cc00.jpg"
     },
     {
-      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\user\\201c10dc-1619-4df5-ab24-ff278c464ef7.jpg",
-      "PackagePath": "staticwebassets\\img\\user\\201c10dc-1619-4df5-ab24-ff278c464ef7.jpg"
+      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\user\\75f37a94-3b63-492e-bae6-b1cd4d2a63e3.jpg",
+      "PackagePath": "staticwebassets\\img\\user\\75f37a94-3b63-492e-bae6-b1cd4d2a63e3.jpg"
     },
     {
-      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\user\\21b3b898-5c20-4792-adc5-8bc1e4498ae6.jpg",
-      "PackagePath": "staticwebassets\\img\\user\\21b3b898-5c20-4792-adc5-8bc1e4498ae6.jpg"
-    },
-    {
-      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\user\\351fc5c3-cedd-462d-9d23-13b81740922c.jpg",
-      "PackagePath": "staticwebassets\\img\\user\\351fc5c3-cedd-462d-9d23-13b81740922c.jpg"
-    },
-    {
-      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\user\\5fc7fcf2-aed7-4afa-ba1f-6c29632c8bd2.jpg",
-      "PackagePath": "staticwebassets\\img\\user\\5fc7fcf2-aed7-4afa-ba1f-6c29632c8bd2.jpg"
-    },
-    {
-      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\user\\65422884-5014-4509-a715-068e5a92f223.jpg",
-      "PackagePath": "staticwebassets\\img\\user\\65422884-5014-4509-a715-068e5a92f223.jpg"
-    },
-    {
-      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\user\\76724fbc-3b61-49e7-a5d4-abddf41ebd53.jpg",
-      "PackagePath": "staticwebassets\\img\\user\\76724fbc-3b61-49e7-a5d4-abddf41ebd53.jpg"
-    },
-    {
-      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\user\\8df98496-af1d-4e6b-835c-ee92db50087e.jpg",
-      "PackagePath": "staticwebassets\\img\\user\\8df98496-af1d-4e6b-835c-ee92db50087e.jpg"
-    },
-    {
-      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\user\\ae64a735-0ad0-4833-86ca-7a69b44c8c1d.jpg",
-      "PackagePath": "staticwebassets\\img\\user\\ae64a735-0ad0-4833-86ca-7a69b44c8c1d.jpg"
-    },
-    {
-      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\user\\c77d71b7-9648-49ea-8817-42c3841f58b0.jpg",
-      "PackagePath": "staticwebassets\\img\\user\\c77d71b7-9648-49ea-8817-42c3841f58b0.jpg"
-    },
-    {
-      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\user\\d753a641-dd4d-4841-a36e-68644cd210d8",
-      "PackagePath": "staticwebassets\\img\\user"
-    },
-    {
-      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\user\\fe5a99cd-4166-4955-a88a-e227f8ac5b38.jpg",
-      "PackagePath": "staticwebassets\\img\\user\\fe5a99cd-4166-4955-a88a-e227f8ac5b38.jpg"
+      "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\user\\b8e42c9b-efe0-485b-8eb4-3c9f211dd567.jpg",
+      "PackagePath": "staticwebassets\\img\\user\\b8e42c9b-efe0-485b-8eb4-3c9f211dd567.jpg"
     },
     {
       "Id": "D:\\ASP_NET_CORE\\MyProjects\\Ecommerce\\wwwroot\\img\\user\\user.jpg",

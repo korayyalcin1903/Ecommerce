@@ -1,0 +1,8 @@
+<h3>Delete</h3>
+<hr>
+<strong>@Model.CategoryName</strong> adlı kategoriyi silmek istediğinizden emin misiniz?
+<form asp-action="Delete" asp-controller="Category" method="post">
+    <input type="hidden" name="id" value="@Model.CategoryId">
+    <button type="submit" class="btn btn-danger">Evet</button>
+    <a href="/Category" class="btn btn-success">Hayır</a>
+</form>

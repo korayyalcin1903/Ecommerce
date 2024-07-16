@@ -1,6 +1,10 @@
 <div class="d-flex justify-content-between">
     <h3>Categories</h3>
-    <a href="/Category/Create" class="btn btn-outline-dark">Create</a>
+    <form asp-action="Index" asp-controller="Category" method="post" class="d-flex">
+        <div asp-validation-summary="All"></div>
+        <input type="text" name="categoryName" id="categoryName" class="form-control">
+        <button type="submit" class="btn btn-outline-dark">Create</button>
+    </form>
 </div>
 <hr>
 

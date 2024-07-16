@@ -10,10 +10,12 @@ public class AccountController:Controller
 {
     public readonly UserManager<User> _userManager;
     public readonly SignInManager<User> _signInManager;
+    public readonly EcommerceContext _context;
     public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, EcommerceContext context)
     {
         _userManager = userManager;
         _signInManager = signInManager;
+        _context = context;
     }
 
     public async Task<string> ImageUpload(IFormFile formFile, string currentAvatarFileName)
@@ -209,6 +211,34 @@ public class AccountController:Controller
         return View(model);
     }
 
+    public async Task<IActionResult> Order()
+    {
+        var user = await _userManager.GetUserAsync(User);
+        var order = await _context.Orders.Where(x => x.UserId == user.Id).ToListAsync();
 
+        if(order.Count > 0){
+            return View(order);
+        }
 
+        return View();
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> OrderDetails(int id){
+        var order = await _context.Orders.FirstOrDefaultAsync(x => x.OrderId == id);
+        var orderItems = await _context.OrderItems.Where(x => x.OrderId == id).ToListAsync();
+        var products = await _context.Products.ToListAsync();
+
+        var viewModel = new ProductOrderViewModel{
+            Order = order,
+            Products = products,
+            OrderItems = orderItems
+        };
+        
+        if(order != null){
+            return View(viewModel);
+        } else {
+            return NotFound();
+        }
+    }
 }

@@ -1,0 +1,30 @@
+<h3>Orders</h3>
+<hr>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Order Id</td>
+            <td>Order Date</td>
+            <td>Shipping Address</td>
+            <td>Total Amount</td>
+            <td>Details</td>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model.Count > 0){
+            @foreach(var item in Model){
+                <tr>
+                    <td>@item.OrderId</td>
+                    <td>@item.OrderDate.ToString("dd.mm.yyyy")</td>
+                    <td>@item.ShippingAddress.Substring(0, Math.Min(50, item.ShippingAddress.Length))...</td>
+                    <td>@item.TotalAmount</td>
+                        <td>
+                            <a href="/Account/OrderDetails/@item.OrderId" class="btn btn-warning btn-sm">Details</a>
+                        </td>
+                </tr>
+            }
+        } else {
+            <div class="alert alert-warning">Malesef sipariş yok</div>
+        }
+    </tbody>
+</table>
